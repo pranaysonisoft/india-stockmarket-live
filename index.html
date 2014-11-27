@@ -1,0 +1,53 @@
+<!doctype html> 
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Quote Stream
+        </title>
+        
+          <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+          <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+           <link rel="stylesheet" href="http://bootsnipp.com/js/selectize/css/selectize.bootstrap3.css">
+        
+    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+    </head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var socket = io.connect("http://localhost:4000");
+              socket.on('quote', function(data) {
+                
+                //usa data 
+                 // var data = $("<pre>" + data + "</pre><hr />");
+                //  $("#quotes").append(data);
+                //  $("html, body").animate({ scrollTop: $(document).height() }, 100);
+                //  $(data).show("slide", { direction: "up" }, 250);
+                //  $(data).effect("highlight", {}, 1500);
+                
+                var data = data.data[0];
+                
+                var row = "<tr>";
+                for (var field in data) {
+                    row += "<td>"+data[field]+"</td>";
+                }
+                row += '</tr>';
+                $("#tbldetail").append(row);
+              });
+        });
+    </script>
+    <body>
+          	<table id="tbldetail" class="table table-striped table-condensed">
+        <thead>
+            <tr>
+             <th>extremeLossMargin</th><th>cm_ffm</th><th>bcStartDate</th><th>change</th><th>buyQuantity3</th><th>sellPrice1</th><th>buyQuantity4</th><th>sellPrice2</th><th>priceBand</th><th>buyQuantity1</th><th>deliveryQuantity</th><th>buyQuantity2</th><th>cm_adj_low</th><th>sellPrice5</th><th>quantityTraded</th><th>buyQuantity5</th><th>sellPrice3</th><th>sellPrice4</th><th>open</th><th>cm_adj_high</th><th>low52</th><th>securityVar</th><th>marketType</th><th>pricebandupper</th><th>totalTradedValue</th><th>faceValue</th><th>ndStartDate</th><th>previousClose</th><th>symbol</th><th>varMargin</th><th>lastPrice</th><th>pChange</th><th>adhocMargin</th><th>companyName</th><th>averagePrice</th><th>secDate</th><th>series</th><th>isinCode</th><th>indexVar</th><th>pricebandlower</th><th>totalBuyQuantity</th><th>high52</th><th>purpose</th><th>cm_adj_low_dt</th><th>closePrice</th><th>recordDate</th><th>cm_adj_high_dt</th><th>totalSellQuantity</th><th>dayHigh</th><th>exDate</th><th>sellQuantity5</th><th>bcEndDate</th><th>css_status_desc</th><th>ndEndDate</th><th>sellQuantity2</th><th>sellQuantity1</th><th>buyPrice1</th><th>sellQuantity4</th><th>buyPrice2</th><th>sellQuantity3</th><th>applicableMargin</th><th>buyPrice4</th><th>buyPrice3</th><th>buyPrice5</th><th>dayLow</th><th>deliveryToTradedQuantity</th><th>totalTradedVolume</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+        <div id="quotes"></div>
+    </body>
+</html>
