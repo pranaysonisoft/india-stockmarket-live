@@ -1,15 +1,18 @@
 
 
-# mytesting
+# india-stockmarket-live
 
 
 
 ## Usage
+http://localhost:4000/RPOWER
+http://localhost:4000/RCOM
 
+Use any valid NSE CODE
 
 
 ## Developing
-
+Node Js + Socket.io + Twitter Bootstrap 
 
 
 ### Tools
